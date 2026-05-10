@@ -66,118 +66,38 @@
             <h2 class="fw-bold text-dark text-center">NEW ARRIVALS</h2>
             <!-- card -->
             <div class="row mt-4 justify-content-center">
-                <!-- card 1 -->
-                <div class="col-6 col-md-3 mb-3">
-                    <div class="card border-1 shadow-lg">
-                        <img src="assets/img/produk1.jpg" alt="produk 1" class="card-img-top" />
-                        <div class="card-body bg-white text-dark d-flex flex-column justify-content-between">
-                            <div>
-                                <h5 class="card-title fw-bold mb-1">EcoWear</h5>
-                                <p class="text-muted mb-1">Eco Friendly</p>
-                                <p class="card-text fs-5 fw-semibold">Rp.199.000</p>
+                @forelse ($products as $item)
+                    <div class="col-6 col-md-3 mb-3">
+                        <div class="card border-1 shadow-lg">
+                            @if (!$item->image)
+                                <img src="{{ asset('assets/img/placeholder.jpg') }}" alt="{{ $item->name }}"
+                                    class="card-img-top" />
+                            @else
+                                <img src="{{ Storage::url('products/' . $item->image) }}" alt="{{ $item->name }}"
+                                    class="card-img-top" />
+                            @endif
+                            <div class="card-body bg-white text-dark d-flex flex-column justify-content-between">
+                                <div>
+                                    <h5 class="card-title fw-bold mb-1">{{ $item->name }}</h5>
+                                    @if (!$item->description)
+                                        <p>No description available.</p>
+                                    @else
+                                        <p class="text-muted mb-1">{{ $item->description }}</p>
+                                    @endif
+                                    <p class="card-text fs-5 fw-semibold">Rp.{{ number_format($item->price, 0, ',', '.') }}
+                                    </p>
+                                </div>
+                                <a href="https://api.whatsapp.com/send?phone=6283139744994&text=Hi! I'm interested in purchasing the {{ $item->name }}."
+                                    class="btn btn-dark rounded-5" type="submit" target="_blank">Buy</a>
                             </div>
-                            <a href="#" class="btn btn-dark rounded-5" type="submit">Buy</a>
                         </div>
                     </div>
-                </div>
-                <!-- card 2 -->
-                <div class="col-6 col-md-3">
-                    <div class="card border-1 shadow-lg">
-                        <img src="assets/img/produk2.jpg" alt="produk 2" class="card-img-top" />
-                        <div class="card-body bg-white text-dark d-flex flex-column justify-content-between">
-                            <div>
-                                <h5 class="card-title fw-bold mb-1">SmartFit</h5>
-                                <p class="text-muted mb-1">Smart Design</p>
-                                <p class="card-text fs-5 fw-semibold">Rp.249.000</p>
-                            </div>
-                            <a href="#" class="btn btn-dark rounded-5" type="submit">Buy</a>
-                        </div>
+                @empty
+                    <div class="col-12">
+                        <p class="text-center">No products available.</p>
                     </div>
-                </div>
-                <!-- card 3 -->
-                <div class="col-6 col-md-3 mb-3">
-                    <div class="card border-1 shadow-lg">
-                        <img src="assets/img/produk3.jpg" alt="produk 3" class="card-img-top" />
-                        <div class="card-body bg-white text-dark d-flex flex-column justify-content-between">
-                            <div>
-                                <h5 class="card-title fw-bold mb-1">VitaStyle</h5>
-                                <p class="text-muted mb-1">Healthy Living</p>
-                                <p class="card-text fs-5 fw-semibold">Rp.179.000</p>
-                            </div>
-                            <a href="#" class="btn btn-dark rounded-5" type="submit">Buy</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- card 4 -->
-                <div class="col-6 col-md-3">
-                    <div class="card border-1 shadow-lg">
-                        <img src="assets/img/produk4.jpg" alt="produk 3" class="card-img-top" />
-                        <div class="card-body bg-white text-dark d-flex flex-column justify-content-between">
-                            <div>
-                                <h5 class="card-title fw-bold mb-1">NexaCloth</h5>
-                                <p class="text-muted mb-1">Modern Fashion</p>
-                                <p class="card-text fs-5 fw-semibold">Rp.299.000</p>
-                            </div>
-                            <a href="#" class="btn btn-dark rounded-5" type="submit">Buy</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- card 5 -->
-                <div class="col-6 col-md-3 mb-3">
-                    <div class="card border-1 shadow-lg">
-                        <img src="assets/img/produk5.jpg" alt="produk 3" class="card-img-top" />
-                        <div class="card-body bg-white text-dark d-flex flex-column justify-content-between">
-                            <div>
-                                <h5 class="card-title fw-bold mb-1">AuraWear</h5>
-                                <p class="text-muted mb-1">Elegant Aura</p>
-                                <p class="card-text fs-5 fw-semibold">Rp.349.000</p>
-                            </div>
-                            <a href="#" class="btn btn-dark rounded-5" type="submit">Buy</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- card 6 -->
-                <div class="col-6 col-md-3">
-                    <div class="card border-1 shadow-lg">
-                        <img src="assets/img/produk6.jpg" alt="produk 3" class="card-img-top" />
-                        <div class="card-body bg-white text-dark d-flex flex-column justify-content-between">
-                            <div>
-                                <h5 class="card-title fw-bold mb-1">FlexStyle</h5>
-                                <p class="text-muted mb-1">Flexible Comfort</p>
-                                <p class="card-text fs-5 fw-semibold">Rp.229.000</p>
-                            </div>
-                            <a href="#" class="btn btn-dark rounded-5" type="submit">Buy</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- card 7 -->
-                <div class="col-6 col-md-3">
-                    <div class="card border-1 shadow-lg">
-                        <img src="assets/img/produk7.jpg" alt="produk 3" class="card-img-top" />
-                        <div class="card-body bg-white text-dark d-flex flex-column justify-content-between">
-                            <div>
-                                <h5 class="card-title fw-bold mb-1">UrbanFit</h5>
-                                <p class="text-muted mb-1">Urban Style</p>
-                                <p class="card-text fs-5 fw-semibold">Rp.279.000</p>
-                            </div>
-                            <a href="#" class="btn btn-dark rounded-5" type="submit">Buy</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- card 8 -->
-                <div class="col-6 col-md-3">
-                    <div class="card border-1 shadow-lg">
-                        <img src="assets/img/produk8.jpg" alt="produk 3" class="card-img-top" />
-                        <div class="card-body bg-white text-dark d-flex flex-column justify-content-between">
-                            <div>
-                                <h5 class="card-title fw-bold mb-1">PrimeCloth</h5>
-                                <p class="text-muted mb-1">Premium Quality</p>
-                                <p class="card-text fs-5 fw-semibold">Rp.499.000</p>
-                            </div>
-                            <a href="#" class="btn btn-dark rounded-5" type="submit">Buy</a>
-                        </div>
-                    </div>
-                </div>
+                @endforelse
+
             </div>
         </div>
     </section>
