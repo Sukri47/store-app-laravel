@@ -97,7 +97,11 @@
                         <p class="text-center">No products available.</p>
                     </div>
                 @endforelse
+            </div>
 
+            <!-- Pagination Navigation -->
+            <div class="d-flex justify-content-center mt-5">
+                {{ $products->links('pagination::bootstrap-5') }}
             </div>
         </div>
     </section>
@@ -110,4 +114,6 @@
             color: black;
         }
     </style>
+@endpush
+@push('script')
 @endpush
